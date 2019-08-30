@@ -15,8 +15,6 @@ rcParams['font.family'] = 'serif'
 
 #DATA
 # OUTCOMES
-#metadata = pd.read_csv('../BARBARA_ONSPD_AUG_2017_LONDON_W_METADATA_NEW_IMGID_HC_LSOA_LABELS.csv')
-
 pickle_in = open("../ONSPD_AUG_2017_LONDON_W_METADATA_NEW_IMGID_HC_LSOA_LABELS.p","rb")
 metadata = pickle.load(pickle_in)
 
@@ -39,13 +37,15 @@ outcome = 'mean-income-decile-london-lsoa'
 #dep-health-decile-london-lsoa
 #dep-liv-env-decile-london-lsoa
 
-
-
 sns.distplot(metadata[outcome], color='darkseagreen')
 plt.title('Mean Income', fontdict={'fontsize': '20', 'fontweight' : '3', 'family' : 'serif'})
 plt.show()
 
+
+
 '''
+#### OTHER PLOTS
+
 ### indexing
 X = obj_df_img
 y = metadata[['mean-income-decile-london-lsoa', 'lsoa11', 'img_id']]
@@ -67,8 +67,6 @@ mean_inc_dict = dict(zip(Z['lsoa11'], Z['mean-income-decile-london-lsoa']))
 
 #shape: (116828, 83)
 
-
-
 objects = Z.groupby('lsoa11').sum()
 objects = objects.iloc[:,1:80]
 objects['counts'] = objects.index
@@ -79,8 +77,6 @@ objects['mean_income'].update(pd.Series(mean_inc_dict))
 
 
 variables = ['car', 'person', 'truck', 'potted plant', 'bus', 'bench', 'bicycle', 'motorcycle', 'traffic light', 'chair']
-
-
 
 
 # total number of objects per object
@@ -106,9 +102,6 @@ plt.show()
 
 
 #plot objects per lsoa
-
-
-
 fig, ax = plt.subplots()
 
 
